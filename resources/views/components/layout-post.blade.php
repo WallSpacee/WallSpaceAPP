@@ -13,15 +13,12 @@
     <title>Halaman Home</title>
 </head>
 <body>
+    <x-header></x-header>
     <div class="bg-white">
-        <x-header>
-        </x-header>
 
-        <div class="relative isolate px-6 pt-14 lg:px-8">
-
-                {{ $slot }}
-
-          </div>
+    <div class="relative isolate px-6 pt-14 lg:px-8">
+        {{ $slot }}
+  </div>
 
       </div>
 

@@ -15,11 +15,23 @@
     </div>
     <div class="hidden lg:flex lg:gap-x-12">
       <a href="/" class="text-sm/6 font-semibold text-gray-900">Home</a>
-      <a href="/about" class="text-sm/6 font-semibold text-gray-900">Features</a>
-      <a href="/posts" class="text-sm/6 font-semibold text-gray-900">Marketplace</a>
+      <a href="/posts" class="text-sm/6 font-semibold text-gray-900">Post</a>
+      <a href="/about" class="text-sm/6 font-semibold text-gray-900">Marketplace</a>
       <a href="#" class="text-sm/6 font-semibold text-gray-900">Company</a>
     </div>
     <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-      <a href="#" class="text-sm/6 font-semibold text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
-    </div>
+        @if(Auth::check())
+        <form action="/logout" method="POST">
+            @csrf
+            <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+                <a href="/login" class="text-sm/6 font-semibold text-gray-900">Log Out <span aria-hidden="true">&rarr;</span></a>
+              </div>
+        </form>
+        @else
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+            <a href="/login" class="text-sm/6 font-semibold text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
+          </div>
+        @endif
+        </div>
+
   </nav>
