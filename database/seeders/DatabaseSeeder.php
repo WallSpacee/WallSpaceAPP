@@ -15,9 +15,11 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        User::create([
+            'name' => 'Admin',
+            'email' => 'admin@uhamka.ac.id',
+            'password' => bcrypt('123123'), // Pastikan untuk mengenkripsi password
+            'role' => 'admin', // Menetapkan peran sebagai admin
         ]);
     }
 }

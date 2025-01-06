@@ -58,6 +58,13 @@ class AuthController extends Controller
         $data = $request->only(['email', 'password']);
         if (Auth::attempt($data)) {
             $request->session()->regenerate();
+
+            // Cek peran pengguna dan arahkan ke halaman yang sesuai
+            $user = Auth::user();
+            if ($user->role === 'admin') {
+                return redirect()->intended('/admin/dashboard')->with('success', 'Selamat datang di dashboard admin!');
+            }
+
             return redirect()->intended('/posts')->with('success', 'Berhasil login!');
         }
 
@@ -73,6 +80,6 @@ class AuthController extends Controller
         Auth::logout();
         request()->session()->invalidate();
         request()->session()->regenerateToken();
-        return redirect('/login');
+        return redirect('/login')->with('success', 'Anda telah berhasil logout.');
     }
 }
